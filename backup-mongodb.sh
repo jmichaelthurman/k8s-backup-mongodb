@@ -16,8 +16,6 @@ echo "[$SCRIPT_NAME] Dumping all MongoDB databases to compressed archive..."
 mongodump $OPLOG_FLAG \
 	--archive="$ARCHIVE_NAME" \
 	--gzip \
-	--username "root"
-	--password "$MONGODB_ROOT_PASSWORD"
 	--uri "$MONGODB_URI"
 
 echo "[$SCRIPT_NAME] Uploading compressed archive to S3 bucket..."
