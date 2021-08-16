@@ -6,6 +6,9 @@ SCRIPT_NAME=backup-mongodb
 ARCHIVE_NAME=mongodump_$(date +%Y%m%d_%H%M%S).gz
 OPLOG_FLAG=""
 
+export MONGODB_ROOT_PASSWORD
+
+
 if [ -n "$MONGODB_OPLOG" ]; then
 	OPLOG_FLAG="--oplog"
 fi
