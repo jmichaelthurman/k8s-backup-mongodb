@@ -12,9 +12,9 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t mongodb-s3:latest .
-      - docker tag mongodb-s3:latest 602955111154.dkr.ecr.us-east-2.amazonaws.com/mongodb-s3:1.1.0     
+      - docker tag mongodb-s3:latest 602955111154.dkr.ecr.us-east-2.amazonaws.com/mongodb-s3:1.1.1     
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 602955111154.dkr.ecr.us-east-2.amazonaws.com/mongodb-s3:1.1.0
+      - docker push 602955111154.dkr.ecr.us-east-2.amazonaws.com/mongodb-s3:1.1.1
