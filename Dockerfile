@@ -11,7 +11,7 @@ RUN chmod +x backup-mongodb.sh
 ENV MONGODB_URI ""
 ENV MONGODB_OPLOG ""
 ENV BUCKET_URI ""
-ENV MONGODB_ROOT_PASSWORD ""
+
 
 
 CMD ["/scripts/backup-mongodb.sh"]
