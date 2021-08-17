@@ -17,6 +17,7 @@ mongodump $OPLOG_FLAG \
 	--archive="$ARCHIVE_NAME" \
 	--gzip \
 	--uri "$MONGODB_URI"
+	--authenticationDatabase "admin"
 
 echo "[$SCRIPT_NAME] Uploading compressed archive to S3 bucket..."
 aws s3 cp "$ARCHIVE_NAME" "$BUCKET_URI"
