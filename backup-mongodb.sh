@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 set -e
 
@@ -12,6 +12,7 @@ if [ -n "$MONGODB_OPLOG" ]; then
 fi
 
 echo "[$SCRIPT_NAME] Dumping all MongoDB databases to compressed archive..."
+
 
 mongodump $OPLOG_FLAG \
 	--archive="$ARCHIVE_NAME" \
