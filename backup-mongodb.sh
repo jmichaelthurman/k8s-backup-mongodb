@@ -10,7 +10,7 @@ OPLOG_FLAG=""
 if [ -n "$MONGODB_OPLOG" ]; then
 	OPLOG_FLAG="--oplog"
 fi
-
+echo "password is $MONGODB_ROOT_PASSWORD"
 echo "[$SCRIPT_NAME] Dumping all MongoDB databases to compressed archive..."
 
 
@@ -20,7 +20,7 @@ mongodump $OPLOG_FLAG \
 	--host="$MONGODB_HOST"
 	--authenticationDatabase="$MONGODB_AUTH_DB"
 	--user="$MONGODB_USER"
-	--password="$MONGODB_PASSWORD"
+	--password="$MONGODB_ROOT_PASSWORD"
 
 
 echo "[$SCRIPT_NAME] Uploading compressed archive to S3 bucket..."
