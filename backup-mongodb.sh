@@ -18,7 +18,7 @@ echo "oplog-flag = $OPLOG_FLAG"
 mongodump $OPLOG_FLAG \
 	--archive "$ARCHIVE_NAME" \
 	--gzip \
-	--host "$MONGODB_HOST"
+	--host "'$MONGODB_HOST'"
 	--authenticationDatabase "$MONGODB_AUTH_DB"
 	-u $MONGODB_USER
 	-p "$MONGODB_ROOT_PASSWORD"
