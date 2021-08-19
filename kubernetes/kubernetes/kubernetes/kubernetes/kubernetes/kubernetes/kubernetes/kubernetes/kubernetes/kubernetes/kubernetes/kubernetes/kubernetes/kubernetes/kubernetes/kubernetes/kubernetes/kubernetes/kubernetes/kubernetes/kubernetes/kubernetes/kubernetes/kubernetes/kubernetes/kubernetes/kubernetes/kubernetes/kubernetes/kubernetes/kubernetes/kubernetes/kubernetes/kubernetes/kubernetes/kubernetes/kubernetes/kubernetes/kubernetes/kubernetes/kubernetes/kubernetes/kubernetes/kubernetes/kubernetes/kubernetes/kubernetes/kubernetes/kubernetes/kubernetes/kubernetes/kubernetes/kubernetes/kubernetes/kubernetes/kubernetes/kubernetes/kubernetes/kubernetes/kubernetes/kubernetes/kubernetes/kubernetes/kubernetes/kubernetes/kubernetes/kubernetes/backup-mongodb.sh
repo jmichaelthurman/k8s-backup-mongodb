@@ -14,20 +14,14 @@ echo "password is $MONGODB_ROOT_PASSWORD"
 echo "[$SCRIPT_NAME] Dumping all MongoDB databases to compressed archive..."
 
 
-# mongodump $OPLOG_FLAG \
-# 	--archive="$ARCHIVE_NAME" \
-# 	--gzip \
+mongodump $OPLOG_FLAG \
+	--archive="$ARCHIVE_NAME" \
+	--gzip \
 	
-# 	--authenticationDatabase="$MONGODB_AUTH_DB"
-# 	--user="$MONGODB_USER"
-# 	--password="$MONGODB_ROOT_PASSWORD"
-# 	--host="$MONGODB_HOST"
-mongodump --archive="$ARCHIVE_NAME" \
- --gzip \
- --host "mongodb-0.mongodb-headless.mongodb.svc.cluster.local:27017,mongodb-1.mongodb-headless.mongodb.svc.cluster.local:27017,mongodb-2.mongodb-headless.mongodb.svc.cluster.local:27017" \
- --authenticationDatabase admin \
- -u root \
- -p "moonswitch"
+	--authenticationDatabase="$MONGODB_AUTH_DB"
+	--user="$MONGODB_USER"
+	--password="$MONGODB_ROOT_PASSWORD"
+	--host="$MONGODB_HOST"
 
 
 echo "[$SCRIPT_NAME] Uploading compressed archive to S3 bucket..."
