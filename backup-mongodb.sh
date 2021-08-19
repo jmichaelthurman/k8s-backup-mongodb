@@ -22,7 +22,8 @@ echo "[$SCRIPT_NAME] Dumping all MongoDB databases to compressed archive..."
 # 	--user="$MONGODB_USER"
 # 	--password="$MONGODB_ROOT_PASSWORD"
 # 	--host="$MONGODB_HOST"
-mongodump --archive="$ARCHIVE_NAME" \
+mongodump --oplog
+--archive="$ARCHIVE_NAME" \
  --gzip \
  --host "mongodb-0.mongodb-headless.mongodb.svc.cluster.local:27017,mongodb-1.mongodb-headless.mongodb.svc.cluster.local:27017,mongodb-2.mongodb-headless.mongodb.svc.cluster.local:27017" \
  --authenticationDatabase admin \
