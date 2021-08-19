@@ -12,23 +12,24 @@ if [ -n "$MONGODB_OPLOG" ]; then
 fi
 echo "password is $MONGODB_ROOT_PASSWORD"
 echo "[$SCRIPT_NAME] Dumping all MongoDB databases to compressed archive..."
+echo "oplog-flag = $OPLOG_FLAG"
 
 
-# mongodump $OPLOG_FLAG \
-# 	--archive="$ARCHIVE_NAME" \
-# 	--gzip \
+mongodump $OPLOG_FLAG \
+	--archive "$ARCHIVE_NAME" \
+	--gzip \
+	--host "$MONGODB_HOST"
+	--authenticationDatabase "$MONGODB_AUTH_DB"
+	-u $MONGODB_USER
+	-p "$MONGODB_ROOT_PASSWORD"
 	
-# 	--authenticationDatabase="$MONGODB_AUTH_DB"
-# 	--user="$MONGODB_USER"
-# 	--password="$MONGODB_ROOT_PASSWORD"
-# 	--host="$MONGODB_HOST"
-mongodump --oplog \
---archive="$ARCHIVE_NAME" \
- --gzip \
- --host "mongodb-0.mongodb-headless.mongodb.svc.cluster.local:27017,mongodb-1.mongodb-headless.mongodb.svc.cluster.local:27017,mongodb-2.mongodb-headless.mongodb.svc.cluster.local:27017" \
- --authenticationDatabase admin \
- -u root \
- -p "moonswitch"
+# mongodump --oplog \
+# --archive="$ARCHIVE_NAME" \
+#  --gzip \
+#  --host "mongodb-0.mongodb-headless.mongodb.svc.cluster.local:27017,mongodb-1.mongodb-headless.mongodb.svc.cluster.local:27017,mongodb-2.mongodb-headless.mongodb.svc.cluster.local:27017" \
+#  --authenticationDatabase admin \
+#  -u root \
+#  -p "moonswitch"
 
 
 echo "[$SCRIPT_NAME] Uploading compressed archive to S3 bucket..."
