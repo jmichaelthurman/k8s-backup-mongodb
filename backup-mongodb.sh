@@ -15,13 +15,13 @@ echo "[$SCRIPT_NAME] Dumping all MongoDB databases to compressed archive..."
 echo "oplog-flag = $OPLOG_FLAG"
 
 
-mongodump $OPLOG_FLAG \
-	--archive "$ARCHIVE_NAME" \
-	--gzip \
-	--host "$MONGODB_HOST"
-	--authenticationDatabase "$MONGODB_AUTH_DB"
-	-u $MONGODB_USER
-	-p "$MONGODB_ROOT_PASSWORD"
+
+mongodump $OPLOG_FLAG --archive="$ARCHIVE_NAME" --gzip  --host $MONGODB_HOST --authenticationDatabase $MONGODB_AUTH_DB -u $MONGODB_USER -p $MONGODB_ROOT_PASSWORD
+
+if [ $ERR ]; then
+        echo $ERR
+fi
+
 	
 # mongodump --oplog \
 # --archive="$ARCHIVE_NAME" \
